@@ -50,7 +50,7 @@ app.get('/api/v1/bars', (req, res) => {
 
 app.get('/api/v1/bars/:id', (req, res) => {
   const bars = JSON.parse(fs.readFileSync(barDataPath));
-  let matchingBar = bars.find(bar => bar.id === parseInt(params.id))
+  let matchingBar = bars.find(bar => bar.id === parseInt(req.params.id))
   let barInfo = matchingBar || {};
   res.status(200).send(JSON.stringify(barInfo));
 })
